@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>message</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,minimum=1,user-scalable=0">
+	<link rel="stylesheet" href="//cdn.bootcss.com/weui/1.0.2/style/weui.min.css">
+	<link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+	<link rel="stylesheet" href="assets/css/information-notice.css">
+</head>
+<body>
+	<div class="release clear">
+		<span class="need"><img src="assets/img/publish_btn02@2x.png" width="100px"><br><span>发布需求</span></span>
+		<span class="resource clear"><img src="assets/img/publish_btn02@2x.png" width="100px"><br><span>发布房源</span></span>
+		<span class="btn-close"><img src="assets/img/publish_close_icon@2x.png"></span>
+	</div>
+	<div class="container">
+		<div class="head">
+			<div class="tabbar-top">
+				<div class="title1" onclick="window.location='information-message.html'">消息</div>
+				<div class="title2 title-active">通知</div>
+				<div class="title3" onclick="window.location='information-demand.html'">需求</div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list">
+				<div class="list-head">
+					<span class="list-title">房源维护提示</span>
+					<span class="list-date">11/08/13:14</span>
+					<div class="clear"></div>
+				</div>
+
+			<span class="list-content">
+			&nbsp;&nbsp;&nbsp;您在本平台上传一处房源信息，现在有效期马上就要到了，
+			请到“我发布的房源”中更新动态，5天后该房源将自动下
+			架。
+			地址：徐汇-龙华 科技大厦
+			</span>
+			</div>
+			<div class="list">
+				<div class="list-head">
+					<span class="list-title">房源维护提示</span>
+					<span class="list-date">11/08/13:14</span>
+					<div class="clear"></div>
+				</div>
+
+			<span class="list-content">
+			&nbsp;&nbsp;&nbsp;您在本平台上传一处房源信息，现在有效期马上就要到了，
+			请到“我发布的房源”中更新动态，5天后该房源将自动下
+			架。
+			地址：徐汇-龙华 科技大厦
+			</span>
+			</div>
+		</div>
+
+		<div class="tabbar-bottom">
+			<ul class="tabbar-box">
+				<li class="tabbar-li1">
+					<span class="tabbar-name" onclick="window.location='index.html'">首页</span>
+				</li>
+				<li class="tabbar-li2">
+					<span class="tabbar-name" onclick="window.location='book.html'">预约</span>
+				</li>
+				<li class="tabbar-li3">
+				</li>
+				<li class="tabbar-li4">
+					<span class="tabbar-name tabbar-name-active">信息</span>
+				</li>
+				<li class="tabbar-li5">
+					<span class="tabbar-name" onclick="window.location='personal.html'">我</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+	<script src="./libs/jquery/jquery-1.12.2.min.js"></script>
+	<script src="./libs/swiper/swiper.jquery.min.js"></script>
+	<script>
+	$(function(){
+		var publish = $( ".tabbar-li3" );
+		var release = $(".release");
+		var close = $(".btn-close")
+		publish.click( function()
+		{
+			//alert("1");
+			release.css("display","block")
+		} );
+		close.click( function()
+		{
+			release.css("display","none")
+		} );
+	})
+	</script>
+</body>
+</html>
