@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>message</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,minimums=1,user-scalable=0">
+	<link rel="stylesheet" href="//cdn.bootcss.com/weui/1.0.2/style/weui.min.css">
+	<link rel="stylesheet" href="./libs/swiper/swiper.min.css">
+	<link rel="stylesheet" href="../static/css/information-demand.css">
+</head>
+<body>
+	<div class="release clear">
+		<span class="need"><img src="../static/img/publish_btn02@2x.png" width="100px"><br><span>发布需求</span></span>
+		<span class="resource clear"><img src="../static/img/publish_btn02@2x.png" width="100px"><br><span>发布房源</span></span>
+		<span class="btn-close"><img src="../static/img/publish_close_icon@2x.png"></span>
+	</div>
+	<div class="container">
+		<div class="head">
+			<div class="tabbar-top">
+				<div class="title1" onclick="window.location='information-message.html'">消息</div>
+				<div class="title2" onclick="window.location='information-notice.html'">通知</div>
+				<div class="title3 title-active">需求</div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="list">
+				<div class="list-head">
+					<span class="list-title">一个新的租房需求</span>
+					<span class="tag tag-tenant">租户</span>
+				</div>
+				<div class="list-content">
+				<span>需求为：外滩SOHO，200平米写字楼，简装带家私，租金8
+					元/㎡/天左右，附近有地铁</span><br>
+					<span class="btn-detail">了解详情</span>
+					<span class="list-date">11/08/13:14</span>
+				</div>
+			</div>
+			<div class="list">
+				<div class="list-head">
+					<span class="list-title">一个新的租房需求</span>
+					<span class="tag tag-agent">经纪人</span>
+				</div>
+				<div class="list-content">
+				<span>需求为：外滩SOHO，200平米写字楼，简装带家私，租金8
+					元/㎡/天左右，附近有地铁</span>
+					<span class="btn-detail">了解详情</span>
+					<span class="list-date">11/08/13:14</span>
+				</div>
+			</div>
+			<div class="list">
+				<div class="list-head">
+					<span class="list-title">一个新的租房需求</span>
+					<span class="tag tag-business">招商</span>
+				</div>
+				<div class="list-content">
+				<span>需求为：外滩SOHO，200平米写字楼，简装带家私，租金8
+					元/㎡/天左右，附近有地铁</span>
+					<span class="btn-detail">了解详情</span>
+					<span class="list-date">11/08/13:14</span>
+				</div>
+			</div>
+			<div class="list">
+				<div class="list-head">
+					<span class="list-title">一个新的租房需求</span>
+					<span class="tag tag-c-agent">代理商</span>
+				</div>
+				<div class="list-content">
+				<span>需求为：外滩SOHO，200平米写字楼，简装带家私，租金8
+					元/㎡/天左右，附近有地铁</span>
+					<span class="btn-detail">了解详情</span>
+					<span class="list-date">11/08/13:14</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="tabbar-bottom">
+			<ul class="tabbar-box">
+				<li class="tabbar-li1">
+					<span class="tabbar-name" onclick="window.location='../index.html'">首页</span>
+				</li>
+				<li class="tabbar-li2">
+					<span class="tabbar-name" onclick="window.location='book.html'">预约</span>
+				</li>
+				<li class="tabbar-li3">
+				</li>
+				<li class="tabbar-li4">
+					<span class="tabbar-name tabbar-name-active">信息</span>
+				</li>
+				<li class="tabbar-li5">
+					<span class="tabbar-name" onclick="window.location='personal.html'">我</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/Swiper/3.4.0/js/swiper.jquery.min.js"></script>
+	<script>
+	$(function(){
+		var publish = $( ".tabbar-li3" );
+		var release = $(".release");
+		var close = $(".btn-close")
+		publish.click( function()
+		{
+			//alert("1");
+			release.css("display","block")
+		} );
+		close.click( function()
+		{
+			release.css("display","none")
+		} );
+	})
+	</script>
+</body>
+</html>
