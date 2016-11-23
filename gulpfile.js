@@ -1,43 +1,102 @@
-/**
- * Created by chenbin on 2016/11/15.
- */
-var gulp =require('gulp')
-	htmlmin = require('gulp-htmlmin')
-	imagemin = require('gulp-imagemin')
-	minifycss=require('gulp-minify-css')
-	uglify=require('gulp-uglify');
+var gulp = require('gulp'),
+    stylus = require('gulp-stylus'),
+    concat = require('gulp-concat'),
+    minifycss = require('gulp-minify-css'),
+    uglify = require('gulp-uglify'),
+    htmlmin = require('gulp-htmlmin'),
+    imagemin = require('gulp-imagemin'),
+    nodemon = require('nodemon'),
+    del = require('del');
 
-//压缩html
-gulp.task('htmlmin',function(){
-	// gulp.src(['.views/index.html','./views/login.html'])
-	gulp.src('./views/**/*.html')
-		.pipe(htmlmin())
-		.pipe(gulp.dest('./dist/views'));
-	gulp.src('./index.html')
-		.pipe(htmlmin())
-		.pipe(gulp.dest('./dist'));
+var browserSync = require('browser-sync').create();
+var reload = browserSync.reload;
+
+//编译stylus
+gulp.task('stylus', function(){
+  return gulp.src('./public/stylus/**/*.styl')
+  .pipe(stylus())
+  .pipe(gulp.dest('./public/css'));
 });
 
-//压缩js
-gulp.task('uglify',function(){
-	gulp.src('./libs/**/*.js')
-		.pipe(uglify())
-		.pipe(gulp.dest('./dist/static/js'));
-});
 
 //压缩css
-gulp.task('minifycss',function(){
-	gulp.src('./static/css/**/*.css')
-		.pipe(minifycss())
-		.pipe(gulp.dest('./dist/static/css'));
+gulp.task('minifycss', ['stylus'], function(){
+  return gulp.src('./public/css/**/*.css')
+  .pipe(minifycss())
+  .pipe(gulp.dest('./dist/public/css'));
 });
 
-//压缩图片
-gulp.task('imagemin',function(){
-	gulp.src('./static/img/**/*.{png,jpg,gif,ico}')
-		.pipe(imagemin())
-		.pipe(gulp.dest('./dist/static/img'));
+
+//压缩js
+gulp.task('uglify', function(){
+  return gulp.src('./public/js/**/*.js')
+  .pipe(uglify())
+  .pipe(gulp.dest('./dist/public/js'));
 });
 
-//合并运行任务
-gulp.task('default',['htmlmin','uglify','minifycss','imagemin']);
+
+//压缩html
+gulp.task('htmlmin', function(){
+  return gulp.src('./views/**/*.html')
+  .pipe(htmlmin())
+  .pipe(gulp.dest('./dist/views'))
+});
+
+//压缩images
+gulp.task('imagemin', function(){
+  return gulp.src('./public/img/**/*{png,jpg,ico,gif}')
+  .pipe(imagemin())
+  .pipe(gulp.dest('./dist/public/img'));
+});
+
+
+//启动服务器
+gulp.task('nodemon', (a)=> {
+  let ft = false;
+  return nodemon({
+    script: 'app.js'
+  }).on('start', ()=> {
+    if (!ft) {
+      a();
+      ft = true;
+    }
+  });
+});
+
+
+//  proxy 服务器代理
+gulp.task('browser-sync',['nodemon'] , ()=> {
+  browserSync.init({
+    proxy: {
+      target: 'http://127.0.0.1:16087'
+    },
+    files: ['*'],
+    open: false,
+    notify: false,
+    port: 9800
+  });
+});
+
+//编译前清除文件
+gulp.task('clean', function(opt){
+  del(['./dist'], opt);
+});
+
+//构建项目
+gulp.task('build', ['stylus', 'minifycss', 'uglify', 'imagemin', 'htmlmin']);
+
+//监听文件变更
+gulp.task('watch', function(){
+  gulp.watch('./public/stylus/**/*.styl', ['stylus']);
+  gulp.watch([
+    './views/**/*.html',
+    './public/css/**/*.css',
+    './public/js/**/*.js',
+    './public/img/**/*.{png,jpg,ico,gif}}'
+  ]).on('change', reload);
+});
+
+//启动任务
+gulp.task('default', ['browser-sync', 'stylus', 'watch'], function(){
+  console.log("gulp default");
+});
