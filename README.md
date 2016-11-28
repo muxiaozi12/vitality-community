@@ -1,4 +1,4 @@
-# 项目模板
+﻿# 项目模板
 * 下载
   - `git clone http://github.com/guanjp/autoproject.git`
 
@@ -23,4 +23,4 @@
     - `node app.js`
 
   - 访问
-    - `http://127.0.0.1:16080/index.html`
+    - `http://127.0.0.1:16087/index.html`
